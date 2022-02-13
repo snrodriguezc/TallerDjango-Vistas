@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1d9a3221-6183-4de0-a3e1-f80a0e0a3c17",
+		"_postman_id": "572575dd-2b14-49e7-97e3-8bb9f6a04910",
 		"name": "Monitoring",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -114,7 +114,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}:{{port}}{{api_path}}/variables?id=3",
+					"raw": "{{host}}:{{port}}{{api_path}}/variables",
 					"host": [
 						"{{host}}"
 					],
@@ -125,7 +125,8 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "3"
+							"value": "1",
+							"disabled": true
 						}
 					]
 				}
@@ -136,15 +137,6 @@
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "{{host}}:{{port}}{{api_path}}/variables",
 							"host": [
@@ -204,15 +196,6 @@
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "{{host}}:{{port}}{{api_path}}/variables?id=3",
 							"host": [
@@ -275,7 +258,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"New Var\"\r\n}",
+					"raw": "{\r\n    \"name\":\"Var4\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -283,14 +266,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}:{{port}}{{api_path}}/variables/3",
+					"raw": "{{host}}:{{port}}{{api_path}}/variables/4",
 					"host": [
 						"{{host}}"
 					],
 					"port": "{{port}}{{api_path}}",
 					"path": [
 						"variables",
-						"3"
+						"4"
 					]
 				}
 			},
@@ -365,14 +348,20 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{host}}:{{port}}{{api_path}}/variables/1",
+					"raw": "{{host}}:{{port}}{{api_path}}/variables/?id=3",
 					"host": [
 						"{{host}}"
 					],
 					"port": "{{port}}{{api_path}}",
 					"path": [
 						"variables",
-						"1"
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						}
 					]
 				}
 			},
@@ -431,6 +420,136 @@
 					"body": "[\n    {\n        \"model\": \"variables.variable\",\n        \"pk\": 3,\n        \"fields\": {\n            \"name\": \"New Var\"\n        }\n    }\n]"
 				}
 			]
+		},
+		{
+			"name": "Create Measurement",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"variable\": 3,\r\n    \"value\": 120,\r\n    \"unit\": \"°C\",\r\n    \"place\": \"here\",\r\n    \"dateTime\": \"2000-02-13T18:32:43.701Z\"\r\n}"
+				},
+				"url": {
+					"raw": "{{host}}:{{port}}{{api_path}}/measurements/",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}{{api_path}}",
+					"path": [
+						"measurements",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Measurements",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:{{port}}{{api_path}}/measurements",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}{{api_path}}",
+					"path": [
+						"measurements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Measurement",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"variable\": 3,\r\n    \"value\": 200,\r\n    \"unit\": \"°F\",\r\n    \"place\": \"there\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}:{{port}}{{api_path}}/measurements/9",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}{{api_path}}",
+					"path": [
+						"measurements",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Measurement",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:{{port}}{{api_path}}/measurements/?id=9",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}{{api_path}}",
+					"path": [
+						"measurements",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Measurement",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:{{port}}{{api_path}}/measurements/11",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}{{api_path}}",
+					"path": [
+						"measurements",
+						"11"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -456,7 +575,7 @@
 	"variable": [
 		{
 			"key": "host",
-			"value": "http://127.0.0.1"
+			"value": "http://localhost"
 		},
 		{
 			"key": "port",
